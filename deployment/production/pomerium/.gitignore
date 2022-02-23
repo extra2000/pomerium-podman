@@ -1,0 +1,13 @@
+configmaps/*
+!configmaps/*.example
+
+configs/*
+!configs/*.example
+
+secrets/*
+!secrets/.gitkeep
+
+selinux/*
+!selinux/*.example
+
+pomerium-pod.yaml

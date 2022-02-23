@@ -1,0 +1,5 @@
+output/*
+docs-pomerium-pod.yaml
+
+src/*
+!src/.gitkeep

@@ -1,0 +1,38 @@
+# Main configuration flags : https://www.pomerium.com/docs/reference/
+
+address: ":8443" 
+pomerium_debug: true 
+service: "all" 
+log_level: info 
+
+forward_auth_url: https://forwardauth.mydomain.io
+authenticate_service_url: https://authenticate.mydomain.io
+insecure_server: true
+
+cookie_secret: WwMtDXWaRDMBQCylle8OJ+w4kLIDIGd8W3cB4/zFFtg=
+#signing_key: ""
+cookie_domain: "mydomain.io"
+
+idp_provider: "okta"
+idp_client_id: "REPLACEME"
+idp_client_secret: "REPLACEME"
+idp_provider_url: "https://myorganization.okta.com/oauth2/default"
+idp_service_account: "REPLACEME"
+
+routes:
+  - from: https://verifypomerium.mydomain.io
+    to: http://127.0.0.1:8000
+    policy:
+      - allow:
+          or:
+            - domain:
+                is: mydomain.io
+    pass_identity_headers: true
+  - from: https://kibana.mydomain.io
+    to: https://127.0.0.1:5601
+    tls_skip_verify: true
+    policy:
+      - allow:
+          or:
+            - domain:
+                is: mydomain.io
